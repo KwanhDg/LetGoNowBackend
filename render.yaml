@@ -15,4 +15,9 @@ services:
       - key: PORT
         value: 3000
     healthCheckPath: /api/health
-    autoDeploy: true 
+    autoDeploy: true
+    plan: free
+    disk:
+      name: tmp
+      mountPath: /tmp
+      sizeGB: 1 
