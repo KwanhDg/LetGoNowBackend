@@ -16,7 +16,7 @@ services:
       - key: DATABASE_URL
         sync: false
       - key: NODE_OPTIONS
-        value: "--dns-result-order=ipv4first --no-warnings --max-old-space-size=512"
+        value: "--dns-result-order=ipv4first --no-warnings"
       - key: JWT_SECRET
         sync: false
       - key: PORT
@@ -25,8 +25,6 @@ services:
         value: "4"
       - key: NODE_TLS_REJECT_UNAUTHORIZED
         value: "0"
-      - key: PGSSLMODE
-        value: "require"
     healthCheckPath: /api/health
     autoDeploy: true
     plan: free
