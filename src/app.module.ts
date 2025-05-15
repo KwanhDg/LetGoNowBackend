@@ -29,6 +29,7 @@ import { BookingModule } from './bookings/booking.module';
         },
         retryAttempts: 10,
         retryDelay: 3000,
+        family: 4, // Force IPv4
       }),
       inject: [ConfigService],
     }),
