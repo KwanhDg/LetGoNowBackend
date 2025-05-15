@@ -7,7 +7,7 @@ services:
       npm install
       npm install -g @nestjs/cli
       export PATH=$PATH:$(npm config get prefix)/bin
-      ./node_modules/.bin/nest build
+      node node_modules/@nestjs/cli/bin/nest.js build
       ls -la dist/
     startCommand: npm run start:prod
     envVars:
