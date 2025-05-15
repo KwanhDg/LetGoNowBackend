@@ -3,7 +3,10 @@ services:
     name: letgonow-backend
     env: node
     nodeVersion: 18.17.0
-    buildCommand: npm install && npm run build
+    buildCommand: |
+      npm install -g @nestjs/cli
+      npm install
+      npm run build
     startCommand: npm run start:prod
     envVars:
       - key: NODE_ENV
