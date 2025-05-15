@@ -14,10 +14,11 @@ import { Pool } from 'pg';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => {
         const dbUrl = configService.get('DATABASE_URL');
-        console.log('Database URL:', dbUrl);
+        const connectionString = `${dbUrl}?sslmode=require`;
+        console.log('Database URL:', connectionString);
 
         const pool = new Pool({
-          connectionString: dbUrl,
+          connectionString,
           ssl: {
             rejectUnauthorized: false
           },
@@ -37,7 +38,7 @@ import { Pool } from 'pg';
 
         return {
           type: 'postgres',
-          url: dbUrl,
+          url: connectionString,
           entities: [__dirname + '/**/*.entity{.ts,.js}'],
           synchronize: false,
           ssl: {
