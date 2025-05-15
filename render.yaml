@@ -15,6 +15,16 @@ services:
         value: production
       - key: DATABASE_URL
         sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 5432
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_DATABASE
+        sync: false
       - key: JWT_SECRET
         sync: false
       - key: PORT
