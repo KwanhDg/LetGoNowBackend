@@ -4,8 +4,9 @@ services:
     env: node
     nodeVersion: 18.17.0
     buildCommand: |
-      npm install -g @nestjs/cli
       npm install
+      npm install -g @nestjs/cli
+      export PATH=$PATH:$(npm config get prefix)/bin
       npm run build
     startCommand: npm run start:prod
     envVars:
