@@ -2,6 +2,7 @@ services:
   - type: web
     name: letgonow-backend
     env: node
+    nodeVersion: 18.17.0
     buildCommand: npm install && npm run build
     startCommand: npm run start:prod
     envVars:
@@ -12,4 +13,6 @@ services:
       - key: JWT_SECRET
         sync: false
       - key: PORT
-        value: 3000 
+        value: 3000
+    healthCheckPath: /api/health
+    autoDeploy: true 
