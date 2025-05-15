@@ -25,6 +25,8 @@ services:
         sync: false
       - key: DB_DATABASE
         sync: false
+      - key: DB_SSL
+        value: "true"
       - key: JWT_SECRET
         sync: false
       - key: PORT

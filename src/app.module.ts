@@ -20,6 +20,15 @@ import { BookingModule } from './bookings/booking.module';
         database: configService.get('DB_DATABASE'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: false, // Tắt synchronize để tránh tự động thay đổi schema
+        ssl: {
+          rejectUnauthorized: false
+        },
+        extra: {
+          max: 20,
+          connectionTimeoutMillis: 5000,
+        },
+        retryAttempts: 10,
+        retryDelay: 3000,
       }),
       inject: [ConfigService],
     }),
