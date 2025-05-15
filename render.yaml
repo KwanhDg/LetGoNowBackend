@@ -16,11 +16,15 @@ services:
       - key: DATABASE_URL
         sync: false
       - key: NODE_OPTIONS
-        value: "--dns-result-order=ipv4first"
+        value: "--dns-result-order=ipv4first --no-warnings"
       - key: JWT_SECRET
         sync: false
       - key: PORT
         value: 3000
+      - key: UV_THREADPOOL_SIZE
+        value: "4"
+      - key: NODE_TLS_REJECT_UNAUTHORIZED
+        value: "0"
     healthCheckPath: /api/health
     autoDeploy: true
     plan: free
