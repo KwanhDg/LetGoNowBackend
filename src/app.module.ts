@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { YachtsModule } from './yachts/yachts.module';
 import { BookingModule } from './bookings/booking.module';
 import { Pool } from 'pg';
+import { HealthController } from './health.controller';
 
 @Module({
   imports: [
@@ -59,5 +60,6 @@ import { Pool } from 'pg';
     BookingModule,
     YachtsModule,
   ],
+  controllers: [HealthController],
 })
 export class AppModule {}
