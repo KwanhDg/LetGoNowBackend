@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Room } from './room.entity';
 
 @Entity('yachts')
 export class Yacht {
@@ -37,6 +38,9 @@ export class Yacht {
 
     @Column({ type: 'jsonb', nullable: true })
     facilities: string[];
+
+    @OneToMany(() => Room, room => room.yacht)
+    rooms: Room[];
 
     @CreateDateColumn()
     created_at: Date;

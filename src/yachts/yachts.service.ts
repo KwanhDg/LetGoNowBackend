@@ -22,7 +22,7 @@ export class YachtsService {
     }
 
     async findOne(id: number) {
-        const yacht = await this.yachtsRepository.findOne({ where: { id } });
+        const yacht = await this.yachtsRepository.findOne({ where: { id }, relations: ['rooms'] });
         if (!yacht) {
             throw new NotFoundException(`Yacht with ID ${id} not found`);
         }
