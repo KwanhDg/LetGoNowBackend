@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { Yacht } from './yacht.entity';
 
 @Entity('rooms')
@@ -19,5 +19,6 @@ export class Room {
   area: number;
 
   @ManyToOne(() => Yacht, yacht => yacht.rooms, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'yacht_id' })
   yacht: Yacht;
 } 
