@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { YachtsService } from './yachts.service';
 import { CreateYachtDto } from './dto/create-yacht.dto';
@@ -17,10 +17,22 @@ export class YachtsController {
     }
 
     @Get()
-    @ApiOperation({ summary: 'Get all yachts' })
-    @ApiResponse({ status: 200, description: 'Return all yachts.' })
-    findAll() {
-        return this.yachtsService.findAll();
+    @ApiOperation({ summary: 'Get all yachts with filters' })
+    @ApiResponse({ status: 200, description: 'Return filtered yachts.' })
+    findAll(
+        @Query('q') searchQuery?: string,
+        @Query('price') priceRange?: string,
+        @Query('rating') ratings?: string,
+        @Query('facilities') facilities?: string,
+        @Query('shipType') shipTypes?: string,
+    ) {
+        return this.yachtsService.findAll({
+            searchQuery,
+            priceRange,
+            ratings: ratings ? ratings.split(',').map(Number) : undefined,
+            facilities: facilities ? facilities.split(',') : undefined,
+            shipTypes: shipTypes ? shipTypes.split(',') : undefined,
+        });
     }
 
     @Get(':id')
